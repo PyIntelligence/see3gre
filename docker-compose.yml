@@ -1,0 +1,59 @@
+version: '3.8'
+
+networks:
+  see3gre_network:
+    driver: bridge
+
+services:
+  # ---------------------------------------------------------------------------
+  # Gateway / Proxy Reverso (Nginx + Servidor do Portal Hub)
+  # ---------------------------------------------------------------------------
+  gateway:
+    image: nginx:alpine
+    container_name: see3gre_gateway
+    ports:
+      - "80:80"
+    volumes:
+      # Arquivo de configuração do Nginx
+      - ./gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      # Pasta do Portal Hub (contendo static/ e templates/)
+      - ./see3gre:/usr/share/nginx/html/see3gre:ro
+    networks:
+      - see3gre_network
+    restart: always
+
+  # ---------------------------------------------------------------------------
+  # Satélites Flask (Descomente quando criar as pastas de cada backend)
+  # ---------------------------------------------------------------------------
+  # pwa_area_1:
+  #   build:
+  #     context: ./spokes/pwa_area_1
+  #     dockerfile: Dockerfile
+  #   container_name: see3gre_pwa_1
+  #   expose:
+  #     - "5000"
+  #   networks:
+  #     - see3gre_network
+  #   restart: always
+
+  # pwa_area_2:
+  #   build:
+  #     context: ./spokes/pwa_area_2
+  #     dockerfile: Dockerfile
+  #   container_name: see3gre_pwa_2
+  #   expose:
+  #     - "5000"
+  #   networks:
+  #     - see3gre_network
+  #   restart: always
+
+  # powerbi_service:
+  #   build:
+  #     context: ./spokes/powerbi_service
+  #     dockerfile: Dockerfile
+  #   container_name: see3gre_powerbi
+  #   expose:
+  #     - "5001"
+  #   networks:
+  #     - see3gre_network
+  #   restart: always

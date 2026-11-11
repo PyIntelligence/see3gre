@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Grid de Módulos (Cards do Portal Hub e Sub-Hubs)
+   ========================================================================== */
+.grid-modules {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.module-card {
+    background: var(--card-bg, #ffffff);
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-color, #212529);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.module-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.module-card img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+
+.module-card span {
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   Botões de Ação e Navegação (Header e Subportais)
+   ========================================================================== */
+.btn-voltar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-voltar:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#btn-logout {
+    background-color: #dc3545;
+    color: #ffffff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+#btn-logout:hover {
+    background-color: #c82333;
+}

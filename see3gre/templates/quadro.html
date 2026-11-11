@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro Escolar - SEE3GRE</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/components.css">
+    <style>
+        /* Ajuste para o Iframe ocupar o restante da tela sem rolar a página inteira */
+        body { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+        }
+        .iframe-container { 
+            flex-grow: 1; 
+            width: 100%; 
+            border: none; 
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">SEE3GRE > Quadro Escolar</div>
+        <a href="nudea.html" class="btn-voltar">← Voltar ao NUDEA</a>
+    </header>
+
+    <!-- Usamos o proxy do Nginx para carregar o Render sem erros de Cross-Origin -->
+    <iframe src="/quadro-escolar/" class="iframe-container" title="Quadro Escolar"></iframe>
+</body>
+</html>
