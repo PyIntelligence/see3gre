@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/templates/index.html" },
+    { "source": "/index.html", "destination": "/templates/index.html" },
+    { "source": "/nudea", "destination": "/templates/nudea.html" },
+    { "source": "/nudea.html", "destination": "/templates/nudea.html" },
+    { "source": "/quadro", "destination": "/templates/quadro.html" },
+    { "source": "/quadro.html", "destination": "/templates/quadro.html" }
+  ]
+}
