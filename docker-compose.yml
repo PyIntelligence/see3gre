@@ -1,13 +1,13 @@
 services:
   frontend-site:
-    build: 
+    build:
       context: ./see3gre
       dockerfile: Dockerfile.frontend
     ports:
       - "80:80"
-  
+
   backend-flask:
-    build: 
+    build:
       context: ./gateway
       dockerfile: Dockerfile.backend
     ports:

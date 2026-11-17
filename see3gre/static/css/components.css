@@ -3,42 +3,71 @@
    ========================================================================== */
 .grid-modules {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 1.5rem;
 }
 
+/* Cards Principais com as artes completas em .jpeg (NUDEA, NUAFS, etc.) */
 .module-card {
     background: var(--card-bg, #ffffff);
-    border-radius: 8px;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    border-radius: 12px;
+    padding: 0;
+    display: block;
+    overflow: hidden;
     text-decoration: none;
     color: var(--text-color, #212529);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .module-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 18px rgba(0, 64, 133, 0.18);
+    border-color: var(--primary-color, #004085);
 }
 
 .module-card img {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    margin-bottom: 1rem;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .module-card span {
     font-weight: 600;
     text-align: center;
     font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+/* Cards dos Subportais Internos (ex: dentro do NUDEA com ícone + texto) */
+.sub-module-card {
+    background: var(--card-bg, #ffffff);
+    border-radius: 8px;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    color: var(--primary-color, #004085);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.sub-module-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 64, 133, 0.16);
+}
+
+.sub-module-card span {
+    font-weight: 600;
+    text-align: center;
+    font-size: 1rem;
     line-height: 1.3;
 }
 

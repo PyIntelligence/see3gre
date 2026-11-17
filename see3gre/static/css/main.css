@@ -17,8 +17,34 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Banners Institucionais (Cabeçalho, Banner Abaixo e Rodapé) */
+.site-header,
+.hero-banner,
+.site-footer {
+    width: 100%;
+}
+
+.site-header {
+    background-color: var(--card-bg);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.hero-banner,
+.site-footer {
+    background-color: var(--primary-color);
+}
+
+.banner-full {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Barra de Navegação Superior e Páginas Internas (NUDEA / Quadro Escolar) */
 .header {
     display: flex;
     justify-content: space-between;
@@ -41,14 +67,41 @@ body {
     gap: 1rem;
 }
 
+.btn-voltar {
+    background-color: var(--card-bg);
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-voltar:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+/* Área Central de Conteúdo */
 .dashboard-container {
+    width: 100%;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 0 1rem;
+    flex: 1;
 }
 
-.dashboard-container h1 {
+.dashboard-container h1,
+.section-title {
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
     color: var(--primary-color);
+    padding-left: 0.75rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Mantém o rodapé sempre fixo no final da página */
+.site-footer {
+    margin-top: auto;
 }

@@ -4,34 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quadro Escolar - SEE3GRE</title>
-    
-    <!-- Ajustado para caminho absoluto para garantir que o CSS sempre carregue -->
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/components.css">
-    
     <style>
-        /* Ajuste para o Iframe ocupar o restante da tela sem rolar a página inteira */
-        body { 
-            height: 100vh; 
-            margin: 0; /* Zera a margem padrão do navegador */
-            display: flex; 
-            flex-direction: column; 
-            overflow: hidden; 
+        /* Ajuste para o Iframe ocupar todo o restante da tela sem barra de rolagem dupla */
+        body {
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
-        .iframe-container { 
-            flex-grow: 1; 
-            width: 100%; 
-            border: none; 
+        .iframe-container {
+            flex-grow: 1;
+            width: 100%;
+            border: none;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">SEE3GRE > Quadro Escolar</div>
-        <a href="nudea.html" class="btn-voltar">← Voltar ao NUDEA</a>
+    <!-- Cabeçalho Institucional -->
+    <header class="site-header">
+        <img src="/static/img/cabecalho.jpeg" alt="3ª Gerência Regional de Educação - Secretaria de Estado da Educação" class="banner-full">
     </header>
 
-    <!-- Usando o link direto do Render para garantir o carregamento do CSS e JS originais -->
+    <!-- Barra de Navegação Interna -->
+    <nav class="header">
+        <div class="logo">SEE3GRE &gt; Quadro Escolar</div>
+        <a href="nudea.html" class="btn-voltar">← Voltar ao NUDEA</a>
+    </nav>
+
+    <!-- Sistema Externo Embutido (evita aviso de instalação PWA e garante CSS original) -->
     <iframe src="https://quadro-escolar-3gre.onrender.com" class="iframe-container" title="Quadro Escolar"></iframe>
 </body>
 </html>
