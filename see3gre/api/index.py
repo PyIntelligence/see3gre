@@ -5,10 +5,10 @@ from flask import Flask, jsonify, render_template, request
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 SEE3GRE_DIR = os.path.dirname(CURRENT_DIR)
 
-if CURRENT_DIR not in sys.path:
-    sys.path.insert(0, CURRENT_DIR)
+if SEE3GRE_DIR not in sys.path:
+    sys.path.insert(0, SEE3GRE_DIR)
 
-from noticias_service import obter_noticias_automaticas
+from services.noticias_service import obter_noticias_automaticas
 
 app = Flask(
     __name__,
