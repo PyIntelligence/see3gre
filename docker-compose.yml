@@ -18,4 +18,5 @@ services:
     volumes:
       - ./gateway:/app
       - ./see3gre/templates:/app/templates:ro
-      - ./see3gre/api:/app/api:ro
+      - ./see3gre/static:/app/static:ro
+      - ./see3gre/services:/app/services:ro

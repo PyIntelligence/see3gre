@@ -1,22 +1,22 @@
 import os
 import sys
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, send_from_directory
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if os.path.exists('/app/templates'):
     TEMPLATE_DIR = '/app/templates'
     STATIC_DIR = '/app/static'
-    API_DIR = '/app/api'
+    PROJECT_ROOT = '/app'
 else:
-    TEMPLATE_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'see3gre', 'templates'))
-    STATIC_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'see3gre', 'static'))
-    API_DIR = os.path.abspath(os.path.join(BASE_DIR, '..', 'see3gre', 'api'))
+    PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '..', 'see3gre'))
+    TEMPLATE_DIR = os.path.join(PROJECT_ROOT, 'templates')
+    STATIC_DIR = os.path.join(PROJECT_ROOT, 'static')
 
-if API_DIR not in sys.path:
-    sys.path.insert(0, API_DIR)
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
 
-from noticias_service import obter_noticias_automaticas
+from services.noticias_service import obter_noticias_automaticas
 
 app = Flask(
     __name__,
@@ -70,6 +70,24 @@ def nudea():
 @app.route('/quadro.html')
 def quadro():
     return render_template('quadro.html', active_page='inicio')
+
+@app.route('/manifest.json')
+def pwa_manifest():
+    return send_from_directory(
+        app.static_folder,
+        'manifest.json',
+        mimetype='application/manifest+json'
+    )
+
+@app.route('/sw.js')
+def pwa_service_worker():
+    response = send_from_directory(
+        app.static_folder,
+        'sw.js',
+        mimetype='application/javascript'
+    )
+    response.headers['Cache-Control'] = 'no-cache'
+    return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

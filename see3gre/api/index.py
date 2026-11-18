@@ -1,6 +1,6 @@
 import os
 import sys
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, send_from_directory
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 SEE3GRE_DIR = os.path.dirname(CURRENT_DIR)
@@ -62,3 +62,21 @@ def nudea():
 @app.route('/quadro.html')
 def quadro():
     return render_template('quadro.html', active_page='inicio')
+
+@app.route('/manifest.json')
+def pwa_manifest():
+    return send_from_directory(
+        app.static_folder,
+        'manifest.json',
+        mimetype='application/manifest+json'
+    )
+
+@app.route('/sw.js')
+def pwa_service_worker():
+    response = send_from_directory(
+        app.static_folder,
+        'sw.js',
+        mimetype='application/javascript'
+    )
+    response.headers['Cache-Control'] = 'no-cache'
+    return response

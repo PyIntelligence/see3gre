@@ -1,0 +1,27 @@
+{
+  "id": "/",
+  "name": "Portal SEE3GRE - 3ª Gerência Regional de Educação",
+  "short_name": "SEE3GRE",
+  "description": "Portal institucional e sistemas integrados da 3ª Gerência Regional de Educação da Paraíba.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0d2c54",
+  "theme_color": "#0d2c54",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/static/img/icon-3gre.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/static/img/icon-3gre-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}
