@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+
+{% block title %}Transparência e Conquistas - 3ª GRE | SEE-PB{% endblock %}
+
+{% block extra_head %}
+<style>
+    .transparencia-banner {
+        background: linear-gradient(135deg, #0d2c54 0%, #1e6091 100%);
+        color: #ffffff;
+        padding: 2.25rem 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 14px rgba(13, 44, 84, 0.14);
+    }
+
+    .transparencia-banner h2 {
+        font-size: 1.7rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .transparencia-banner p {
+        color: #e2e8f0;
+        line-height: 1.65;
+        font-size: 1.02rem;
+    }
+
+    .conquistas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.35rem;
+        margin-bottom: 2.25rem;
+    }
+
+    .conquista-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+        border-top: 5px solid #0d2c54;
+    }
+
+    .conquista-card .destaque-num {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: #1e6091;
+        display: block;
+        margin-bottom: 0.35rem;
+    }
+
+    .conquista-card h3 {
+        color: #0d2c54;
+        font-size: 1.1rem;
+        margin-bottom: 0.55rem;
+    }
+
+    .conquista-card p {
+        color: #475569;
+        font-size: 0.92rem;
+        line-height: 1.55;
+    }
+
+    .secao-branca {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 1.75rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .secao-branca h2 {
+        color: #0d2c54;
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+        padding-left: 0.75rem;
+        border-left: 4px solid #1e6091;
+    }
+
+    .tabela-transparencia {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.94rem;
+    }
+
+    .tabela-transparencia th {
+        background-color: #0d2c54;
+        color: #ffffff;
+        text-align: left;
+        padding: 0.85rem 1rem;
+    }
+
+    .tabela-transparencia td {
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        color: #334155;
+        line-height: 1.5;
+    }
+
+    .portais-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.2rem;
+        margin-top: 1rem;
+    }
+
+    .portal-link-card {
+        display: block;
+        background-color: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-left: 5px solid #1e6091;
+        border-radius: 10px;
+        padding: 1.25rem;
+        text-decoration: none;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .portal-link-card:hover {
+        transform: translateY(-3px);
+        border-color: #0d2c54;
+    }
+
+    .portal-link-card strong {
+        display: block;
+        color: #0d2c54;
+        font-size: 1.02rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .portal-link-card span {
+        color: #475569;
+        font-size: 0.88rem;
+        line-height: 1.45;
+        display: block;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="dashboard-container">
+    <h1 class="section-title">Transparência Pública e Conquistas</h1>
+
+    <section class="transparencia-banner">
+        <h2>Compromisso com a Ética, Prestação de Contas e Resultados na Educação</h2>
+        <p>
+            Em alinhamento direto às diretrizes da <strong>Secretaria de Estado da Educação da Paraíba (SEE-PB)</strong>
+            e à Lei de Acesso à Informação (Lei nº 12.527/2011), a 3ª GRE torna públicas suas metas,
+            investimentos, avanços pedagógicos e canais de controle social para toda a comunidade escolar e cidadãos paraibanos.
+        </p>
+    </section>
+
+    <!-- Principais Conquistas da 3ª GRE -->
+    <section class="conquistas-grid">
+        <div class="conquista-card">
+            <span class="destaque-num">Ensino Integral</span>
+            <h3>Expansão e Consolidação das ECITs</h3>
+            <p>
+                Ampliação da oferta de Educação Cidadã Integral e Técnica nos municípios da regional,
+                integrando formação acadêmica, projeto de vida e qualificação profissional.
+            </p>
+        </div>
+
+        <div class="conquista-card">
+            <span class="destaque-num">Infraestrutura</span>
+            <h3>Reformas, Climatização e Acessibilidade</h3>
+            <p>
+                Acompanhamento contínuo de obras de modernização, climatização de salas de aula e
+                adequação de laboratórios nas unidades escolares da 3ª GRE.
+            </p>
+        </div>
+
+        <div class="conquista-card">
+            <span class="destaque-num">Gestão Digital</span>
+            <h3>Processos 100% Rastreáveis (PBDoc)</h3>
+            <p>
+                Tramitação eletrônica de documentos e monitoramento em tempo real via Quadro Escolar,
+                garantindo agilidade administrativa e economia de recursos públicos.
+            </p>
+        </div>
+
+        <div class="conquista-card">
+            <span class="destaque-num">Equidade</span>
+            <h3>Alimentação, Fardamento e Kits Escolares</h3>
+            <p>
+                Fiscalização transparente da entrega regular de merenda escolar regionalizada,
+                fardamento e materiais didáticos aos estudantes da rede estadual.
+            </p>
+        </div>
+    </section>
+
+    <!-- Quadro de Governança e Prestação de Contas -->
+    <section class="secao-branca">
+        <h2>Eixos de Transparência da Política Educacional (SEE-PB)</h2>
+        <div style="overflow-x: auto;">
+            <table class="tabela-transparencia">
+                <thead>
+                    <tr>
+                        <th>Eixo de Governança</th>
+                        <th>Instrumento de Controle</th>
+                        <th>Como a 3ª GRE Atua</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Recursos Financeiros Escolares</strong></td>
+                        <td>Conselhos Escolares, PNAE, PDDE e Repasses Estaduais</td>
+                        <td>Acompanhamento técnico e validação das prestações de contas de todas as 94 escolas junto ao NUAFS.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quadro Docente e Lotação</strong></td>
+                        <td>Sistema Saber e Quadro Escolar Regional</td>
+                        <td>Monitoramento transparente da carga horária, carências e suprimento de professores por disciplina e município.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Indicadores de Aprendizagem</strong></td>
+                        <td>IDEB, IDEPB e Avaliações Diagnósticas</td>
+                        <td>Divulgação de metas e planos de ação pedagógica junto às equipes gestoras para redução da evasão escolar.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Controle Social e Ouvidoria</strong></td>
+                        <td>Lei de Acesso à Informação (LAI) e OGE-PB</td>
+                        <td>Resposta formal dentro dos prazos legais a pedidos de informação, sugestões e denúncias da sociedade.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Portais Oficiais de Acesso Público -->
+    <section class="secao-branca">
+        <h2>Acesso Rápido aos Portais Oficiais do Estado da Paraíba</h2>
+        <div class="portais-grid">
+            <a href="https://transparencia.pb.gov.br" target="_blank" rel="noopener noreferrer" class="portal-link-card">
+                <strong>Portal da Transparência PB →</strong>
+                <span>Consulta pública de despesas, contratos, convênios, obras e remuneração de servidores do Estado.</span>
+            </a>
+            <a href="https://paraiba.pb.gov.br/diretas/secretaria-da-educacao" target="_blank" rel="noopener noreferrer" class="portal-link-card">
+                <strong>Secretaria de Estado da Educação (SEE-PB) →</strong>
+                <span>Editais, portarias, programas educacionais, calendário letivo e atos normativos oficiais.</span>
+            </a>
+            <a href="https://ouvidoria.pb.gov.br" target="_blank" rel="noopener noreferrer" class="portal-link-card">
+                <strong>Ouvidoria Geral do Estado (OGE-PB) →</strong>
+                <span>Canal oficial para solicitações de acesso à informação (e-SIC), elogios, reclamações e denúncias.</span>
+            </a>
+        </div>
+    </section>
+</main>
+{% endblock %}

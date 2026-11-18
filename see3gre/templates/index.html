@@ -1,34 +1,20 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal SEE3GRE - 3ª Gerência Regional de Educação</title>
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="/static/css/components.css">
-</head>
-<body>
-    <!-- Cabeçalho Institucional -->
-    <header class="site-header">
-        <img src="/static/img/cabecalho.jpeg" alt="3ª Gerência Regional de Educação - Secretaria de Estado da Educação" class="banner-full">
-    </header>
+{% extends "base.html" %}
 
-    <!-- Banner Principal Abaixo do Cabeçalho -->
+{% block title %}Portal SEE3GRE - 3ª Gerência Regional de Educação{% endblock %}
+
+{% block content %}
+    <!-- Banner Principal Abaixo do Cabeçalho (Alta definição .png) -->
     <section class="hero-banner">
-        <img src="/static/img/cabecalho_abaixo.jpeg" alt="Transformando a Educação na 3ª Regional" class="banner-full">
+        <img src="/static/img/cabecalho_abaixo.png" alt="Transformando a Educação na 3ª Regional" class="banner-full">
     </section>
 
-    <!-- Grade Dinâmica dos Núcleos (NUDEA, NUAFS, NUCOM, NUDPE, NUTCI) -->
+    <!-- Grade Dinâmica dos 5 Núcleos (NUDEA, NUAFS, NUCOM, NUDPE, NUTCI) -->
     <main class="dashboard-container">
         <h1 class="section-title">Núcleos e Sistemas SEE3GRE</h1>
         <div class="grid-modules" id="modules-grid"></div>
     </main>
+{% endblock %}
 
-    <!-- Rodapé Institucional -->
-    <footer class="site-footer">
-        <img src="/static/img/roda_pe.jpeg" alt="Secretaria da Educação da Paraíba - 3ª Gerência Regional de Educação" class="banner-full">
-    </footer>
-
+{% block extra_scripts %}
     <script src="/static/js/main.js" type="module"></script>
-</body>
-</html>
+{% endblock %}

@@ -1,10 +1,13 @@
 services:
   frontend-site:
-    build:
-      context: ./see3gre
-      dockerfile: Dockerfile.frontend
+    image: nginx:alpine
     ports:
       - "80:80"
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./see3gre/static:/usr/share/nginx/html/see3gre/static:ro
+    depends_on:
+      - backend-flask
 
   backend-flask:
     build:
@@ -12,3 +15,7 @@ services:
       dockerfile: Dockerfile.backend
     ports:
       - "5000:5000"
+    volumes:
+      - ./gateway:/app
+      - ./see3gre/templates:/app/templates:ro
+      - ./see3gre/api:/app/api:ro

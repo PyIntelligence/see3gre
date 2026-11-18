@@ -1,35 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subportal NUDEA - SEE3GRE</title>
-    <link rel="stylesheet" href="/static/css/main.css">
-    <link rel="stylesheet" href="/static/css/components.css">
-</head>
-<body>
-    <!-- Cabeçalho Institucional -->
-    <header class="site-header">
-        <img src="/static/img/cabecalho.jpeg" alt="3ª Gerência Regional de Educação - Secretaria de Estado da Educação" class="banner-full">
-    </header>
+{% extends "base.html" %}
 
-    <!-- Barra de Navegação Interna -->
+{% block title %}Subportal NUDEA - SEE3GRE{% endblock %}
+
+{% block content %}
     <nav class="header">
         <div class="logo">SEE3GRE &gt; NUDEA</div>
         <a href="/" class="btn-voltar">← Voltar ao Portal Central</a>
     </nav>
 
-    <!-- Grade de Sistemas e Módulos do NUDEA -->
     <main class="dashboard-container">
         <h1 class="section-title">Módulos NUDEA</h1>
         <div class="grid-modules" id="nudea-modules-grid"></div>
     </main>
+{% endblock %}
 
-    <!-- Rodapé Institucional -->
-    <footer class="site-footer">
-        <img src="/static/img/roda_pe.jpeg" alt="Secretaria da Educação da Paraíba - 3ª Gerência Regional de Educação" class="banner-full">
-    </footer>
-
+{% block extra_scripts %}
     <script src="/static/js/nudea.js" type="module"></script>
-</body>
-</html>
+{% endblock %}

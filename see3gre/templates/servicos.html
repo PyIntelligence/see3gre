@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block title %}Serviços e Legislação - 3ª GRE | SEE-PB{% endblock %}
+
+{% block extra_head %}
+<style>
+    .servicos-intro {
+        background: linear-gradient(135deg, #0d2c54 0%, #1e6091 100%);
+        color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 14px rgba(13, 44, 84, 0.14);
+    }
+
+    .servicos-intro h2 {
+        font-size: 1.65rem;
+        margin-bottom: 0.65rem;
+    }
+
+    .servicos-intro p {
+        color: #e2e8f0;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    /* Tabela de Serviços */
+    .card-secao {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 1.75rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-secao h2 {
+        color: #0d2c54;
+        font-size: 1.35rem;
+        margin-bottom: 1rem;
+        padding-left: 0.75rem;
+        border-left: 4px solid #1e6091;
+    }
+
+    .tabela-wrapper {
+        overflow-x: auto;
+    }
+
+    .tabela-institucional {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 0.5rem;
+        font-size: 0.94rem;
+    }
+
+    .tabela-institucional th {
+        background-color: #0d2c54;
+        color: #ffffff;
+        text-align: left;
+        padding: 0.85rem 1rem;
+        font-weight: 600;
+    }
+
+    .tabela-institucional td {
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid #e2e8f0;
+        color: #334155;
+        vertical-align: top;
+        line-height: 1.5;
+    }
+
+    .tabela-institucional tr:nth-child(even) td {
+        background-color: #f8fafc;
+    }
+
+    .badge-nucleo {
+        display: inline-block;
+        background-color: #e0f2fe;
+        color: #0d2c54;
+        font-weight: 700;
+        font-size: 0.78rem;
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+    }
+
+    /* Quadros de Legislação e Boas Práticas */
+    .alerta-publico {
+        background-color: #f0f9ff;
+        border-left: 5px solid #0284c7;
+        padding: 1.15rem 1.4rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        color: #0f172a;
+        line-height: 1.6;
+    }
+
+    .boas-praticas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .pratica-box {
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 1.4rem;
+        background-color: #f8fafc;
+    }
+
+    .pratica-box.servidor {
+        border-top: 5px solid #0d2c54;
+    }
+
+    .pratica-box.cidadao {
+        border-top: 5px solid #1e6091;
+    }
+
+    .pratica-box h3 {
+        color: #0d2c54;
+        font-size: 1.12rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .pratica-box ul {
+        padding-left: 1.2rem;
+        color: #334155;
+        line-height: 1.6;
+        font-size: 0.93rem;
+    }
+
+    .pratica-box li + li {
+        margin-top: 0.55rem;
+    }
+
+    .lei-tag {
+        display: inline-block;
+        background-color: #0d2c54;
+        color: #ffffff;
+        font-size: 0.76rem;
+        font-weight: 600;
+        padding: 0.2rem 0.55rem;
+        border-radius: 4px;
+        margin-bottom: 0.35rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="dashboard-container">
+    <h1 class="section-title">Carta de Serviços e Legislação</h1>
+
+    <section class="servicos-intro">
+        <h2>Atendimento ao Cidadão, Escolas e Servidores</h2>
+        <p>
+            A 3ª Gerência Regional de Educação disponibiliza serviços administrativos, pedagógicos,
+            tecnológicos e de documentação escolar aos 38 municípios sob sua jurisdição, pautados pela
+            legalidade, transparência e respeito mútuo no serviço público estadual.
+        </p>
+    </section>
+
+    <!-- Quadro Geral de Serviços Prestados -->
+    <section class="card-secao">
+        <h2>Serviços Prestados pela 3ª GRE</h2>
+        <div class="tabela-wrapper">
+            <table class="tabela-institucional">
+                <thead>
+                    <tr>
+                        <th>Serviço</th>
+                        <th>Setor Responsável</th>
+                        <th>Público-Alvo</th>
+                        <th>Requisitos / Documentação Básica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Autenticação e Regularização de Vida Escolar</strong><br>Históricos, certificados de conclusão e validação de documentos de escolas extintas.</td>
+                        <td><span class="badge-nucleo">NUDEA / Inspeção</span></td>
+                        <td>Estudantes, egressos e unidades escolares</td>
+                        <td>Documento oficial com foto, CPF, requerimento preenchido e cópia do histórico ou declaração anterior.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Acompanhamento Pedagógico e Matrícula</strong><br>Orientação curricular, Educação Integral (ECIT), EJA, Educação Especial e fluxo de matrículas.</td>
+                        <td><span class="badge-nucleo">NUDEA</span></td>
+                        <td>Gestores escolares, professores, pais e estudantes</td>
+                        <td>Ofício escolar, encaminhamento da unidade de ensino ou comprovante de residência (para vaga).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gestão de Pessoas, Lotação e Protocolo (PBDoc)</strong><br>Frequência, férias, licenças, averbações, contratos e tramitação oficial de processos.</td>
+                        <td><span class="badge-nucleo">NUAFS / Protocolo</span></td>
+                        <td>Servidores efetivos, prestadores de serviço e gestores</td>
+                        <td>Matrícula funcional, requerimento padrão via PBDoc e documentação comprobatória específica.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Infraestrutura, Alimentação e Transporte Escolar</strong><br>Suprimentos, prestação de contas (PNAE/PDDE/PGE), manutenção predial e logística.</td>
+                        <td><span class="badge-nucleo">NUAFS</span></td>
+                        <td>Diretores escolares e Conselhos Escolares</td>
+                        <td>Relatórios de prestação de contas, notas fiscais, atas do Conselho Escolar e ofícios técnicos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Protagonismo Estudantil, Esporte e Cultura</strong><br>Jogos Escolares, Grêmios Estudantis, olimpíadas do conhecimento e programas juvenis.</td>
+                        <td><span class="badge-nucleo">NUDPE</span></td>
+                        <td>Estudantes e articuladores escolares</td>
+                        <td>Ficha de inscrição institucional assinada pela gestão da escola e autorização dos responsáveis.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Suporte Tecnológico e Sistemas Educacionais</strong><br>Quadro Escolar, Saber, conectividade nas escolas, laboratórios e estatística educacional.</td>
+                        <td><span class="badge-nucleo">NUTCI</span></td>
+                        <td>Secretários escolares, gestores e equipe técnica</td>
+                        <td>Solicitação formal da unidade escolar com identificação do código INEP e descrição da demanda.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Divulgação Institucional e Imprensa</strong><br>Cobertura de ações pedagógicas, eventos regionais e comunicação oficial da 3ª GRE.</td>
+                        <td><span class="badge-nucleo">NUCOM</span></td>
+                        <td>Comunidade escolar, imprensa e sociedade</td>
+                        <td>Envio prévio de pauta, release ou solicitação de cobertura institucional.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Legislação e Boas Práticas de Atendimento Mútuo -->
+    <section class="card-secao">
+        <h2>Legislação e Boas Práticas de Atendimento (Respeito Mútuo)</h2>
+
+        <div class="alerta-publico">
+            <strong>Interesse Público e Prevenção de Maus-Tratos:</strong> O ambiente da 3ª GRE é um espaço público de acolhimento e trabalho. As normas constitucionais e estatutárias estabelecem deveres claros tanto para o <strong>servidor público que atende</strong> quanto para o <strong>cidadão ou servidor que procura atendimento</strong>, coibindo abusos, grosserias, discriminação ou desacato de qualquer das partes.
+        </div>
+
+        <div class="boas-praticas-grid">
+            <div class="pratica-box servidor">
+                <h3>1. Boas Práticas de Atendimento pela 3ª GRE (Deveres do Servidor)</h3>
+                <ul>
+                    <li><strong>Urbanidade e Respeito:</strong> Tratar todo cidadão, estudante, responsável ou colega com cortesia, atenção e sem qualquer distinção ou preconceito.</li>
+                    <li><strong>Presteza e Clareza:</strong> Prestar informações completas, corretas e em linguagem acessível, orientando o usuário sobre prazos e documentos necessários.</li>
+                    <li><strong>Impessoalidade e Eficiência:</strong> Atender por ordem de chegada (respeitadas as prioridades legais) e dar andamento célere aos protocolos.</li>
+                    <li><strong>Sigilo e Ética:</strong> Resguardar dados pessoais e funcionais nos termos da Lei Geral de Proteção de Dados (LGPD).</li>
+                </ul>
+            </div>
+
+            <div class="pratica-box cidadao">
+                <h3>2. Boas Práticas ao Procurar a 3ª GRE (Deveres do Usuário)</h3>
+                <ul>
+                    <li><strong>Cordialidade e Boa-Fé:</strong> Dirigir-se aos servidores e demais usuários com respeito, mantendo o diálogo civilizado mesmo diante de pendências administrativas.</li>
+                    <li><strong>Documentação e Veracidade:</strong> Apresentar documentos legíveis e informações verdadeiras, colaborando para a solução rápida da demanda.</li>
+                    <li><strong>Respeito às Normas Internas:</strong> Aguardar o atendimento nos espaços destinados ao público e respeitar o horário de expediente e os fluxos de protocolo.</li>
+                    <li><strong>Uso dos Canais Formais:</strong> Em caso de insatisfação com o atendimento ou demora injustificada, registrar manifestação formal na Ouvidoria em vez de recorrer a hostilidades.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tabela-wrapper">
+            <table class="tabela-institucional">
+                <thead>
+                    <tr>
+                        <th>Base Legal</th>
+                        <th>Ementa / Dispositivo</th>
+                        <th>Aplicação Prática no Atendimento da 3ª GRE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="lei-tag">Constituição Federal (1988)</span><br><strong>Artigo 37, caput e § 3º</strong></td>
+                        <td>Princípios da Administração Pública (Legalidade, Impessoalidade, Moralidade, Publicidade e Eficiência) e participação do usuário.</td>
+                        <td>Obriga a 3ª GRE a manter padrões de qualidade no atendimento e assegura ao cidadão o direito de reclamar contra a prestação deficiente de serviços.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lei-tag">Legislação Estadual PB</span><br><strong>Lei Complementar nº 58/2003</strong><br>(Estatuto do Servidor Público da PB, Art. 106)</td>
+                        <td>Regime Jurídico dos Servidores Públicos Civis do Estado da Paraíba — Deveres de urbanidade, presteza e lealdade às instituições.</td>
+                        <td>Determina que o servidor estadual trate com urbanidade as partes, atenda com presteza ao público em geral e cumpra as normas legais e regulamentares.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lei-tag">Legislação Federal</span><br><strong>Lei nº 13.460/2017</strong><br>(Código de Defesa do Usuário do Serviço Público, Arts. 5º, 6º e 8º)</td>
+                        <td>Direitos básicos e deveres dos usuários dos serviços públicos na administração direta e indireta.</td>
+                        <td>Garante atendimento presencial acessível e cortês (Art. 5º), mas também estabelece como <strong>dever legal do usuário</strong> agir com urbanidade e boa-fé (Art. 8º).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lei-tag">Código Penal Brasileiro</span><br><strong>Decreto-Lei nº 2.848/1940, Art. 331</strong></td>
+                        <td>Proteção da função pública contra desacato, ofensas verbais, humilhações ou ameaças a servidor no exercício da função.</td>
+                        <td>Resguarda a integridade moral dos trabalhadores da educação contra agressões ou desrespeito durante o atendimento público.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="lei-tag">Prioridade Legal</span><br><strong>Lei nº 10.048/2000 e Lei nº 13.146/2015</strong></td>
+                        <td>Atendimento prioritário e Estatuto da Pessoa com Deficiência.</td>
+                        <td>Assegura prioridade imediata a pessoas com deficiência, idosos (60+), gestantes, lactantes, pessoas com crianças de colo e pessoas com transtorno do espectro autista.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+{% endblock %}
