@@ -2,6 +2,7 @@
     --primary-color: #0d2c54;
     --secondary-color: #1e6091;
     --accent-color: #38bdf8;
+    --warm-highlight: #fbbf24;
     --bg-color: #f4f6f9;
     --text-color: #1e293b;
     --card-bg: #ffffff;
@@ -184,70 +185,89 @@ body {
 }
 
 /* ==========================================================================
-   Rodapé Institucional Limpo (Sem links duplicados, com as 5 bolinhas)
+   Rodapé Institucional (Sede + Acesso Rápido + As 5 Bolinhas)
    ========================================================================== */
 .site-footer {
     width: 100%;
     background-color: var(--primary-color);
     color: #ffffff;
     margin-top: auto;
-    padding: 1.25rem 2rem;
+    padding: 1.5rem 2rem 1.15rem;
+    border-top: 4px solid var(--warm-highlight);
 }
 
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr auto;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
+    gap: 2rem;
 }
 
-.footer-brand {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-.footer-see,
-.footer-gre {
+.footer-info {
     display: flex;
     flex-direction: column;
-    line-height: 1.25;
+    gap: 0.25rem;
+    font-size: 0.86rem;
+    color: #e2e8f0;
+    line-height: 1.45;
 }
 
-.footer-see span {
-    font-size: 0.85rem;
-    color: #cbd5e1;
+.footer-info strong,
+.footer-links-group strong {
+    color: var(--warm-highlight);
+    font-size: 0.94rem;
+    margin-bottom: 0.3rem;
+    display: block;
+    letter-spacing: 0.2px;
 }
 
-.footer-see strong,
-.footer-gre strong {
-    font-size: 1rem;
+.footer-info p {
+    margin: 0;
+}
+
+.footer-links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.footer-quick-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    gap: 0.45rem 1.1rem;
+    font-size: 0.86rem;
+}
+
+.footer-quick-links a {
     color: #ffffff;
+    text-decoration: none;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-left: 3px solid var(--warm-highlight);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.footer-gre small {
-    font-size: 0.8rem;
-    color: #cbd5e1;
-}
-
-.footer-separator {
-    width: 1px;
-    height: 36px;
-    background-color: rgba(255, 255, 255, 0.3);
+.footer-quick-links a:hover {
+    background-color: var(--warm-highlight);
+    color: var(--primary-color);
+    font-weight: 600;
+    transform: translateX(2px);
 }
 
 .footer-socials {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex-shrink: 0;
 }
 
 .social-circle {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     background-color: #ffffff;
     color: var(--primary-color);
@@ -260,8 +280,21 @@ body {
 
 .social-circle:hover {
     transform: translateY(-3px);
-    background-color: var(--accent-color);
-    color: #ffffff;
+    background-color: var(--warm-highlight);
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 1.15rem auto 0;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: #cbd5e1;
 }
 
 /* Responsividade para telas menores */
@@ -276,5 +309,9 @@ body {
     .nav-list {
         justify-content: center;
         gap: 1rem;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.35rem;
     }
 }

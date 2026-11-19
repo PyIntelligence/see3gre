@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Portal SEE3GRE - 3ª Gerência Regional de Educação{% endblock %}</title>
-    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/main.css?v=2">
     <link rel="stylesheet" href="/static/css/components.css">
     <!-- Configuração PWA SEE3GRE (100% PNG para Android, iPhone/iPad e Desktop) -->
     <meta name="theme-color" content="#0d2c54">
@@ -17,7 +17,7 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body>
-    <!-- Cabeçalho Institucional Interativo (Fiel ao design original, com links clicáveis e alta nitidez) -->
+    <!-- Cabeçalho Institucional Interativo -->
     <header class="site-header">
         <div class="header-brand">
             <a href="/" class="brand-link" title="Ir para o Início">
@@ -51,22 +51,28 @@
     <!-- Área de Conteúdo Dinâmico de Cada Página -->
     {% block content %}{% endblock %}
 
-    <!-- Rodapé Institucional Limpo (Sem a faixa de links repetidos e com as 5 bolinhas clicáveis) -->
+    <!-- Rodapé Institucional (Sede + Acesso Rápido + As 5 Bolinhas) -->
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-brand">
-                <div class="footer-see">
-                    <span>Secretaria da</span>
-                    <strong>Educação da Paraíba</strong>
-                </div>
-                <div class="footer-separator"></div>
-                <div class="footer-gre">
-                    <strong>3ª Gerência Regional de Educação</strong>
-                    <small>Compromisso com a Educação</small>
+            <!-- Coluna 1: Sede e Contato (sem horário de funcionamento) -->
+            <div class="footer-info">
+                <strong>Sede Regional — 3ª GRE</strong>
+                <p>Rua Deputado Álvaro Gaudêncio, s/n – Centro, Campina Grande – PB</p>
+                <p>Tel.: (83) 3310-9150 • E-mail: 3gre@see.pb.gov.br</p>
+            </div>
+
+            <!-- Coluna 2: Acesso Rápido (Branco + Destaque Âmbar Dourado Suave) -->
+            <div class="footer-links-group">
+                <strong>Acesso Rápido</strong>
+                <div class="footer-quick-links">
+                    <a href="https://saber.pb.gov.br" target="_blank" rel="noopener noreferrer">Sistema Saber</a>
+                    <a href="https://pbdoc.pb.gov.br" target="_blank" rel="noopener noreferrer">Protocolo PBDoc</a>
+                    <a href="https://ouvidoria.pb.gov.br" target="_blank" rel="noopener noreferrer">Ouvidoria (e-SIC)</a>
+                    <a href="/servicos">Carta de Serviços</a>
                 </div>
             </div>
 
-            <!-- As 5 bolinhas clicáveis da 3ª GRE -->
+            <!-- Coluna 3: As 5 bolinhas clicáveis da 3ª GRE -->
             <div class="footer-socials" aria-label="Links e Redes Sociais da 3ª GRE">
                 <!-- 1. Localização / Mapa da Sede da 3ª GRE -->
                 <a href="https://maps.google.com/?q=3a+Gerencia+Regional+de+Educacao+Campina+Grande+PB" target="_blank" rel="noopener noreferrer" class="social-circle" title="Localização da 3ª GRE (Google Maps)">
@@ -90,16 +96,12 @@
                 </a>
             </div>
         </div>
-    </footer>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .catch((err) => console.warn('Service Worker não registrado:', err));
-            });
-        }
-    </script>
+        <div class="footer-bottom">
+            <span>© 2026 Portal 3ª GRE. <i>Todos os direitos reservados.</i></span>
+            <span>• <i>Desenvolvido pelo NUTCI/NUDEA</i></span>
+        </div>
+    </footer>
 
     <!-- Modal de Instalação PWA (SEE3GRE - PNG Android e iPhone) -->
     <div id="see3gre-pwa-modal" style="display:none; position:fixed; inset:0; background:rgba(9,31,60,0.72); z-index:9999; align-items:center; justify-content:center; padding:20px; font-family:'Segoe UI', Roboto, Arial, sans-serif;">
@@ -134,14 +136,12 @@
         const pwaCloseBtn = document.getElementById('see3gre-close-btn');
         const pwaInstallText = document.getElementById('see3gre-install-text');
 
-        // Remove bloqueio permanente anterior para voltar a exibir em dispositivos que já visitaram
         localStorage.removeItem('see3gre_pwa_first_visit_done');
 
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
         const dismissedThisSession = sessionStorage.getItem('see3gre_pwa_dismissed');
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-        // Android e Computador (Chrome / Edge)
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
@@ -163,7 +163,6 @@
             }
         });
 
-        // iPhone / iPad (Safari)
         window.addEventListener('load', () => {
             if (isIOS && !isStandalone && !dismissedThisSession) {
                 pwaInstallBtn.style.display = 'none';
