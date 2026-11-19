@@ -6,12 +6,12 @@
     <title>{% block title %}Portal SEE3GRE - 3ª Gerência Regional de Educação{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/components.css">
-    <!-- Configuração PWA SEE3GRE (SVG + PNG 180x180 para iPhone/iPad) -->
+    <!-- Configuração PWA SEE3GRE (100% PNG para Android, iPhone/iPad e Desktop) -->
     <meta name="theme-color" content="#0d2c54">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SEE3GRE">
-    <link rel="icon" type="image/svg+xml" href="/static/img/icon-3gre.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="/static/img/icon-3gre-192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/static/img/icon-3gre-180.png">
     <link rel="manifest" href="/manifest.json">
     {% block extra_head %}{% endblock %}
@@ -101,7 +101,7 @@
         }
     </script>
 
-    <!-- Modal de Instalação PWA na Primeira Abertura (SEE3GRE) -->
+    <!-- Modal de Instalação PWA (SEE3GRE - PNG Android e iPhone) -->
     <div id="see3gre-pwa-modal" style="display:none; position:fixed; inset:0; background:rgba(9,31,60,0.72); z-index:9999; align-items:center; justify-content:center; padding:20px; font-family:'Segoe UI', Roboto, Arial, sans-serif;">
         <div style="background:#ffffff; border-radius:14px; max-width:370px; width:100%; padding:26px 24px; text-align:center; box-shadow:0 12px 30px rgba(0,0,0,0.28); border-top:6px solid #0d2c54;">
             <img src="/static/img/icon-3gre-192.png" alt="Portal SEE3GRE" style="width:72px; height:72px; border-radius:16px; margin-bottom:14px; box-shadow:0 4px 10px rgba(13,44,84,0.18);">
@@ -127,15 +127,18 @@
             });
         }
 
-        // 2. Convite de Instalação na Primeira Abertura (Android, PC e iPhone/iPad)
+        // 2. Convite de Instalação Recorrente no Navegador (Android, iPhone/iPad e PC)
         let deferredPrompt;
         const pwaModal = document.getElementById('see3gre-pwa-modal');
         const pwaInstallBtn = document.getElementById('see3gre-install-btn');
         const pwaCloseBtn = document.getElementById('see3gre-close-btn');
         const pwaInstallText = document.getElementById('see3gre-install-text');
 
+        // Remove bloqueio permanente anterior para voltar a exibir em dispositivos que já visitaram
+        localStorage.removeItem('see3gre_pwa_first_visit_done');
+
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-        const alreadyPrompted = localStorage.getItem('see3gre_pwa_first_visit_done');
+        const dismissedThisSession = sessionStorage.getItem('see3gre_pwa_dismissed');
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
         // Android e Computador (Chrome / Edge)
@@ -143,33 +146,35 @@
             e.preventDefault();
             deferredPrompt = e;
 
-            if (!isStandalone && !alreadyPrompted) {
+            if (!isStandalone && !dismissedThisSession) {
+                pwaInstallBtn.style.display = 'block';
                 pwaModal.style.display = 'flex';
-                localStorage.setItem('see3gre_pwa_first_visit_done', 'true');
             }
         });
 
         pwaInstallBtn.addEventListener('click', async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
-                await deferredPrompt.userChoice;
+                const { outcome } = await deferredPrompt.userChoice;
                 deferredPrompt = null;
-                pwaModal.style.display = 'none';
+                if (outcome === 'accepted') {
+                    pwaModal.style.display = 'none';
+                }
             }
         });
 
         // iPhone / iPad (Safari)
         window.addEventListener('load', () => {
-            if (isIOS && !isStandalone && !alreadyPrompted) {
+            if (isIOS && !isStandalone && !dismissedThisSession) {
                 pwaInstallBtn.style.display = 'none';
                 pwaInstallText.innerHTML = 'No iPhone ou iPad, toque no ícone de <strong>Compartilhar</strong> (quadrado com seta para cima) na barra do Safari e escolha <strong>"Adicionar à Tela de Início"</strong>.';
                 pwaModal.style.display = 'flex';
-                localStorage.setItem('see3gre_pwa_first_visit_done', 'true');
             }
         });
 
         pwaCloseBtn.addEventListener('click', () => {
             pwaModal.style.display = 'none';
+            sessionStorage.setItem('see3gre_pwa_dismissed', 'true');
         });
     </script>
 
