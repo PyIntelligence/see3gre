@@ -12,21 +12,27 @@
   "lang": "pt-BR",
   "icons": [
     {
-      "src": "/static/img/icon-3gre.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/static/img/icon-3gre-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
       "purpose": "any"
     },
     {
       "src": "/static/img/icon-3gre-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/static/img/icon-3gre-192.png",
-      "sizes": "192x192",
+      "src": "/static/img/icon-3gre-512.png",
+      "sizes": "512x512",
       "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/static/img/icon-3gre.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]

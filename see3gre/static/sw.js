@@ -1,4 +1,4 @@
-const CACHE_NAME = 'see3gre-pwa-v2';
+const CACHE_NAME = 'see3gre-pwa-v3';
 
 const ASSETS_ESSENCIAIS = [
     '/',
