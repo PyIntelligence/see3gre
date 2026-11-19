@@ -6,14 +6,14 @@
     <title>{% block title %}Portal SEE3GRE - 3ª Gerência Regional de Educação{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/main.css">
     <link rel="stylesheet" href="/static/css/components.css">
-    <!-- Configuração PWA e Ícones Vetoriais (.svg) -->
+    <!-- Configuração PWA SEE3GRE (SVG + PNG 180x180 para iPhone/iPad) -->
     <meta name="theme-color" content="#0d2c54">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="SEE3GRE">
-    <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/svg+xml" href="/static/img/icon-3gre.svg">
-    <link rel="apple-touch-icon" href="/static/img/nudea.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/icon-3gre-180.png">
+    <link rel="manifest" href="/manifest.json">
     {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -99,6 +99,78 @@
                     .catch((err) => console.warn('Service Worker não registrado:', err));
             });
         }
+    </script>
+
+    <!-- Modal de Instalação PWA na Primeira Abertura (SEE3GRE) -->
+    <div id="see3gre-pwa-modal" style="display:none; position:fixed; inset:0; background:rgba(9,31,60,0.72); z-index:9999; align-items:center; justify-content:center; padding:20px; font-family:'Segoe UI', Roboto, Arial, sans-serif;">
+        <div style="background:#ffffff; border-radius:14px; max-width:370px; width:100%; padding:26px 24px; text-align:center; box-shadow:0 12px 30px rgba(0,0,0,0.28); border-top:6px solid #0d2c54;">
+            <img src="/static/img/icon-3gre-192.png" alt="Portal SEE3GRE" style="width:72px; height:72px; border-radius:16px; margin-bottom:14px; box-shadow:0 4px 10px rgba(13,44,84,0.18);">
+            <h3 style="margin:0 0 8px; font-size:19px; color:#0d2c54; font-weight:800;">Instalar App SEE3GRE</h3>
+            <p id="see3gre-install-text" style="margin:0 0 20px; font-size:14px; line-height:1.55; color:#475569;">
+                Instale o aplicativo oficial da <strong>3ª Gerência Regional de Educação</strong> no seu dispositivo para acesso rápido e em tela cheia.
+            </p>
+            <button id="see3gre-install-btn" style="background:#0d2c54; color:#ffffff; border:none; padding:12px 20px; border-radius:8px; font-size:15px; font-weight:700; cursor:pointer; width:100%; margin-bottom:10px;">
+                Instalar Aplicativo Agora
+            </button>
+            <button id="see3gre-close-btn" style="background:transparent; color:#64748b; border:none; font-size:13px; font-weight:600; cursor:pointer; padding:6px;">
+                Continuar no navegador
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Registro do Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .catch((err) => console.warn('Service Worker não registrado:', err));
+            });
+        }
+
+        // 2. Convite de Instalação na Primeira Abertura (Android, PC e iPhone/iPad)
+        let deferredPrompt;
+        const pwaModal = document.getElementById('see3gre-pwa-modal');
+        const pwaInstallBtn = document.getElementById('see3gre-install-btn');
+        const pwaCloseBtn = document.getElementById('see3gre-close-btn');
+        const pwaInstallText = document.getElementById('see3gre-install-text');
+
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+        const alreadyPrompted = localStorage.getItem('see3gre_pwa_first_visit_done');
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        // Android e Computador (Chrome / Edge)
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            if (!isStandalone && !alreadyPrompted) {
+                pwaModal.style.display = 'flex';
+                localStorage.setItem('see3gre_pwa_first_visit_done', 'true');
+            }
+        });
+
+        pwaInstallBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                pwaModal.style.display = 'none';
+            }
+        });
+
+        // iPhone / iPad (Safari)
+        window.addEventListener('load', () => {
+            if (isIOS && !isStandalone && !alreadyPrompted) {
+                pwaInstallBtn.style.display = 'none';
+                pwaInstallText.innerHTML = 'No iPhone ou iPad, toque no ícone de <strong>Compartilhar</strong> (quadrado com seta para cima) na barra do Safari e escolha <strong>"Adicionar à Tela de Início"</strong>.';
+                pwaModal.style.display = 'flex';
+                localStorage.setItem('see3gre_pwa_first_visit_done', 'true');
+            }
+        });
+
+        pwaCloseBtn.addEventListener('click', () => {
+            pwaModal.style.display = 'none';
+        });
     </script>
 
     {% block extra_scripts %}{% endblock %}

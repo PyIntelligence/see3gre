@@ -1,4 +1,4 @@
-const CACHE_NAME = 'see3gre-pwa-v1';
+const CACHE_NAME = 'see3gre-pwa-v2';
 
 const ASSETS_ESSENCIAIS = [
     '/',
@@ -10,7 +10,9 @@ const ASSETS_ESSENCIAIS = [
     '/static/css/main.css',
     '/static/js/main.js',
     '/static/img/icon-3gre.svg',
-    '/static/img/icon-3gre-maskable.svg',
+    '/static/img/icon-3gre-180.png',
+    '/static/img/icon-3gre-192.png',
+    '/static/img/icon-3gre-512.png',
     '/static/img/cabecalho_abaixo.png',
     '/static/img/nudea.png',
     '/static/img/nuafs.png',
@@ -19,7 +21,6 @@ const ASSETS_ESSENCIAIS = [
     '/static/img/nutci.png'
 ];
 
-// Instalação: guarda os arquivos base no cache
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS_ESSENCIAIS))
@@ -27,7 +28,6 @@ self.addEventListener('install', (event) => {
     self.skipWaiting();
 });
 
-// Ativação: remove versões antigas do cache
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((keys) =>
@@ -39,14 +39,12 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Interceptação de requisições
 self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
 
     const url = new URL(event.request.url);
     if (url.origin !== self.location.origin) return;
 
-    // Arquivos estáticos (/static/): Cache-First para abrir instantaneamente
     if (url.pathname.startsWith('/static/')) {
         event.respondWith(
             caches.match(event.request).then((cached) => {
@@ -60,7 +58,6 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Páginas HTML e API: Network-First com fallback para cache offline
     event.respondWith(
         fetch(event.request)
             .then((networkResp) => {
