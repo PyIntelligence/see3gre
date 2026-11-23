@@ -1,9 +1,9 @@
 // Lista de módulos e sistemas acessíveis a partir do Subportal NUTCI
 const nutciModules = [
     {
-        id: 'nutci-maker',
-        title: 'Portal Maker & Tecnologia - NUTCI',
-        icon: '/static/img/nutci.png',
+        id: 'nutci-relatorio-projeto',
+        title: 'Relatório de Projeto - NUTCI',
+        icon: '/static/img/nutci/relatorio-nutci.png',
         url: 'https://makers-bonds-lap-carries.trycloudflare.com/'
     }
 ];

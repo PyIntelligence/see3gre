@@ -1,4 +1,4 @@
-const CACHE_NAME = 'see3gre-pwa-v7';
+const CACHE_NAME = 'see3gre-pwa-v10';
 
 const ASSETS_ESSENCIAIS = [
     '/',
@@ -10,7 +10,7 @@ const ASSETS_ESSENCIAIS = [
     '/nudea',
     '/nutci',
     '/static/css/main.css?v=2',
-    '/static/js/main.js',
+    '/static/js/main.js?v=2',
     '/static/js/nutci.js',
     '/static/img/icon-3gre.svg',
     '/static/img/icon-3gre-180.png',
@@ -21,7 +21,8 @@ const ASSETS_ESSENCIAIS = [
     '/static/img/nuafs.png',
     '/static/img/nucom.png',
     '/static/img/nudpe.png',
-    '/static/img/nutci.png'
+    '/static/img/nutci.png',
+    '/static/img/nutci/relatorio-nutci.png'
 ];
 
 self.addEventListener('install', (event) => {
