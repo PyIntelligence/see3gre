@@ -71,6 +71,11 @@ def nudea():
 def quadro():
     return render_template('quadro.html', active_page='inicio')
 
+@app.route('/nutci')
+@app.route('/nutci.html')
+def nutci():
+    return render_template('nutci.html', active_page='inicio')
+
 @app.route('/manifest.json')
 def pwa_manifest():
     return send_from_directory(

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'see3gre-pwa-v6';
+const CACHE_NAME = 'see3gre-pwa-v7';
 
 const ASSETS_ESSENCIAIS = [
     '/',
@@ -7,8 +7,11 @@ const ASSETS_ESSENCIAIS = [
     '/noticias',
     '/transparencia',
     '/contato',
-    '/static/css/main.css',
+    '/nudea',
+    '/nutci',
+    '/static/css/main.css?v=2',
     '/static/js/main.js',
+    '/static/js/nutci.js',
     '/static/img/icon-3gre.svg',
     '/static/img/icon-3gre-180.png',
     '/static/img/icon-3gre-192.png',

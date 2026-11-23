@@ -25,10 +25,10 @@ const modules = [
         url: '/spokes/nudpe/'
     },
     {
-        id: 'nutci-modulo',
+        id: 'nutci-subportal',
         title: 'NUTCI - Núcleo de Tecnologia, Ciência e Informação',
         icon: '/static/img/nutci.png',
-        url: '/spokes/nutci/'
+        url: '/nutci'
     }
 ];
 

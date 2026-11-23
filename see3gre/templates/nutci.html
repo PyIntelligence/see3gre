@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Subportal NUTCI - SEE3GRE{% endblock %}
+
+{% block content %}
+    <nav class="header">
+        <div class="logo">SEE3GRE &gt; NUTCI</div>
+        <a href="/" class="btn-voltar">← Voltar ao Portal Central</a>
+    </nav>
+
+    <main class="dashboard-container">
+        <h1 class="section-title">Módulos NUTCI</h1>
+        <div class="grid-modules" id="nutci-modules-grid"></div>
+    </main>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="/static/js/nutci.js" type="module"></script>
+{% endblock %}
