@@ -4,13 +4,14 @@ const nudeaModules = [
         id: 'quadro-escolar',
         title: 'Quadro Escolar',
         icon: '/static/img/nudea/quadros_escolares.png',
+        iconSize: '128px',
         url: 'quadro.html'
     },
     {
         id: 'outro-servico-nudea',
         title: 'Outro Módulo NUDEA',
         url: '/spokes/nudea_servico/',
-        svg: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#004085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`
+        svg: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#004085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>`
     }
 ];
 
@@ -30,9 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
             card.rel = 'noopener noreferrer';
         }
 
+        const size = module.iconSize || '128px';
+
         // Prioriza a imagem .png quando "icon" estiver definido; caso contrário, usa o SVG
         const visualIcon = module.icon
-            ? `<img src="${module.icon}" alt="${module.title}" style="width: 88px; height: 88px; object-fit: contain; border-radius: 12px;">`
+            ? `<img src="${module.icon}" alt="${module.title}" style="width: ${size}; height: ${size}; object-fit: contain; border-radius: 12px;">`
             : (module.svg || '');
 
         card.innerHTML = `
