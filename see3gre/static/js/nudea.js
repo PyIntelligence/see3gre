@@ -1,10 +1,10 @@
+// Lista de módulos e sistemas acessíveis a partir do Subportal NUDEA
 const nudeaModules = [
     {
         id: 'quadro-escolar',
         title: 'Quadro Escolar',
-        icon: '/static/img/nudea/quadros_escolas.png',
-        url: 'quadro.html',
-        svg: `<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#004085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`
+        icon: '/static/img/nudea/quadros_escolares.png',
+        url: 'quadro.html'
     },
     {
         id: 'outro-servico-nudea',
@@ -30,8 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
             card.rel = 'noopener noreferrer';
         }
 
+        // Prioriza a imagem .png quando "icon" estiver definido; caso contrário, usa o SVG
+        const visualIcon = module.icon
+            ? `<img src="${module.icon}" alt="${module.title}" style="width: 88px; height: 88px; object-fit: contain; border-radius: 12px;">`
+            : (module.svg || '');
+
         card.innerHTML = `
-            ${module.svg}
+            ${visualIcon}
             <span>${module.title}</span>
         `;
         grid.appendChild(card);

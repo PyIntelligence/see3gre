@@ -1,4 +1,4 @@
-const CACHE_NAME = 'see3gre-pwa-v11';
+const CACHE_NAME = 'see3gre-pwa-v14';
 
 const ASSETS_ESSENCIAIS = [
     '/',
@@ -8,9 +8,11 @@ const ASSETS_ESSENCIAIS = [
     '/transparencia',
     '/contato',
     '/nudea',
+    '/quadro',
     '/nutci',
     '/static/css/main.css?v=2',
     '/static/js/main.js?v=2',
+    '/static/js/nudea.js?v=4',
     '/static/js/nutci.js',
     '/static/img/icon-3gre.svg',
     '/static/img/icon-3gre-180.png',
@@ -22,7 +24,7 @@ const ASSETS_ESSENCIAIS = [
     '/static/img/nucom.png',
     '/static/img/nudpe.png',
     '/static/img/nutci.png',
-    '/static/img/nudea/quadros_escolas.png',
+    '/static/img/nudea/quadros_escolares.png',
     '/static/img/nutci/relatorio-nutci.png'
 ];
 

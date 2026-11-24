@@ -1,5 +1,6 @@
 import html
 import re
+import ssl
 import time
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -97,15 +98,24 @@ def _parse_data(raw_date):
         return None
 
 
-def _buscar_feed(fonte):
-    itens = []
+def _requisitar_xml(url):
     req = urllib.request.Request(
-        fonte["url"],
+        url,
         headers={"User-Agent": "Mozilla/5.0 (Portal-SEE3GRE/1.0; +https://see3gre.pb.gov.br)"}
     )
-    with urllib.request.urlopen(req, timeout=8) as resp:
-        xml_bytes = resp.read()
+    try:
+        with urllib.request.urlopen(req, timeout=8) as resp:
+            return resp.read()
+    except urllib.error.URLError:
+        # Fallback para cadeias SSL governamentais (ICP-Brasil) em imagens Docker slim
+        ctx_inseguro = ssl._create_unverified_context()
+        with urllib.request.urlopen(req, timeout=8, context=ctx_inseguro) as resp:
+            return resp.read()
 
+
+def _buscar_feed(fonte):
+    itens = []
+    xml_bytes = _requisitar_xml(fonte["url"])
     root = ET.fromstring(xml_bytes)
 
     for elem in root.iter():
