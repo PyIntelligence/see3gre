@@ -1,4 +1,4 @@
-const CACHE_NAME = 'see3gre-pwa-v10';
+const CACHE_NAME = 'see3gre-pwa-v11';
 
 const ASSETS_ESSENCIAIS = [
     '/',
@@ -22,6 +22,7 @@ const ASSETS_ESSENCIAIS = [
     '/static/img/nucom.png',
     '/static/img/nudpe.png',
     '/static/img/nutci.png',
+    '/static/img/nudea/quadros_escolas.png',
     '/static/img/nutci/relatorio-nutci.png'
 ];
 
