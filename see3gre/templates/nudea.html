@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Subportal NUDEA - SEE3GRE{% endblock %}
+
+{% block content %}
+    <nav class="header">
+        <div class="logo">SEE3GRE &gt; NUDEA</div>
+        <a href="/" class="btn-voltar">← Voltar ao Portal Central</a>
+    </nav>
+
+    <main class="dashboard-container">
+        <h1 class="section-title">Módulos NUDEA</h1>
+        <div class="grid-modules" id="nudea-modules-grid"></div>
+    </main>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="/static/js/nudea.js" type="module"></script>
+{% endblock %}

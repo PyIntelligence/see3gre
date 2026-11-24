@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+
+{% block title %}Contato - 3ª GRE | Secretaria de Estado da Educação da Paraíba{% endblock %}
+
+{% block extra_head %}
+<style>
+    .contato-topo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2.25rem;
+    }
+
+    .info-sede-card {
+        background: linear-gradient(135deg, #0d2c54 0%, #1e6091 100%);
+        color: #ffffff;
+        border-radius: 12px;
+        padding: 1.75rem;
+        box-shadow: 0 4px 14px rgba(13, 44, 84, 0.14);
+    }
+
+    .info-sede-card h2 {
+        font-size: 1.35rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .info-sede-card p {
+        color: #e2e8f0;
+        line-height: 1.65;
+        font-size: 0.96rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .setores-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.35rem;
+        margin-bottom: 2.25rem;
+    }
+
+    .setor-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        border-left: 5px solid #0d2c54;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .setor-card h3 {
+        color: #0d2c54;
+        font-size: 1.12rem;
+        margin-bottom: 0.45rem;
+    }
+
+    .setor-card .setor-desc {
+        color: #475569;
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin-bottom: 0.85rem;
+    }
+
+    .setor-dados {
+        font-size: 0.9rem;
+        color: #1e293b;
+        line-height: 1.65;
+    }
+
+    /* Formulário de Triagem / Contato */
+    .form-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-card h2 {
+        color: #0d2c54;
+        font-size: 1.35rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-card p {
+        color: #475569;
+        margin-bottom: 1.35rem;
+        font-size: 0.94rem;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #0d2c54;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.7rem 0.9rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        color: #1e293b;
+        background-color: #f8fafc;
+    }
+
+    .btn-enviar {
+        background-color: #0d2c54;
+        color: #ffffff;
+        border: none;
+        padding: 0.8rem 1.6rem;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 0.96rem;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .btn-enviar:hover {
+        background-color: #1e6091;
+    }
+
+    .feedback-envio {
+        display: none;
+        margin-top: 1rem;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
+        background-color: #ecfdf5;
+        border: 1px solid #10b981;
+        color: #065f46;
+        font-size: 0.94rem;
+        line-height: 1.55;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="dashboard-container">
+    <h1 class="section-title">Canais de Contato da 3ª GRE</h1>
+
+    <!-- Informações da Sede -->
+    <section class="contato-topo">
+        <div class="info-sede-card">
+            <h2>Sede da 3ª Gerência Regional de Educação</h2>
+            <p><strong>Endereço:</strong> Rua Deputado Álvaro Gaudêncio, s/n – Centro, Campina Grande – PB, CEP 58400-235</p>
+            <p><strong>Telefone Geral / Recepção:</strong> (83) 3310-9150</p>
+            <p><strong>E-mail Institucional:</strong> 3gre@see.pb.gov.br</p>
+        </div>
+
+        <div class="info-sede-card">
+            <h2>Horário de Atendimento Presencial</h2>
+            <p><strong>Segunda a Sexta-feira:</strong> 08h00 às 12h00 e 13h30 às 17h30</p>
+            <p><strong>Protocolo Digital (PBDoc):</strong> Funcionamento contínuo para tramitação de processos oficiais entre escolas e setores.</p>
+            <p><em>Lembre-se de portar documento oficial com foto ao comparecer à regional.</em></p>
+        </div>
+    </section>
+
+    <!-- Contatos por Núcleo e Serviço -->
+    <section class="setores-grid">
+        <article class="setor-card">
+            <h3>Gabinete e Protocolo Geral</h3>
+            <p class="setor-desc">Atendimento à gestão regional, recebimento de ofícios, demandas institucionais e agendamento.</p>
+            <div class="setor-dados">
+                <div><strong>Telefone:</strong> (83) 3310-9150</div>
+                <div><strong>E-mail:</strong> gabinete.3gre@see.pb.gov.br</div>
+            </div>
+        </article>
+
+        <article class="setor-card">
+            <h3>NUDEA — Desenvolvimento da Escola e Aprendizagem</h3>
+            <p class="setor-desc">Acompanhamento pedagógico, inspeção escolar, certificados, históricos, ECIT, EJA e Educação Especial.</p>
+            <div class="setor-dados">
+                <div><strong>Telefone:</strong> (83) 3310-9154</div>
+                <div><strong>E-mail:</strong> nudea.3gre@see.pb.gov.br</div>
+            </div>
+        </article>
+
+        <article class="setor-card">
+            <h3>NUAFS — Administrativo, Financeiro e Suprimentos</h3>
+            <p class="setor-desc">Recursos humanos, folha, férias, licenças, prestação de contas, alimentação e transporte escolar.</p>
+            <div class="setor-dados">
+                <div><strong>Telefone:</strong> (83) 3310-9158</div>
+                <div><strong>E-mail:</strong> nuafs.3gre@see.pb.gov.br</div>
+            </div>
+        </article>
+
+        <article class="setor-card">
+            <h3>NUDPE — Protagonismo Estudantil</h3>
+            <p class="setor-desc">Jogos Escolares, Grêmios Estudantis, olimpíadas científicas e projetos de participação juvenil.</p>
+            <div class="setor-dados">
+                <div><strong>Telefone:</strong> (83) 3310-9162</div>
+                <div><strong>E-mail:</strong> nudpe.3gre@see.pb.gov.br</div>
+            </div>
+        </article>
+
+        <article class="setor-card">
+            <h3>NUTCI — Tecnologia, Ciência e Informação</h3>
+            <p class="setor-desc">Suporte técnico, Quadro Escolar, Sistema Saber, laboratórios de informática e conectividade.</p>
+            <div class="setor-dados">
+                <div><strong>Telefone:</strong> (83) 3310-9165</div>
+                <div><strong>E-mail:</strong> nutci.3gre@see.pb.gov.br</div>
+            </div>
+        </article>
+
+        <article class="setor-card">
+            <h3>NUCOM — Comunicação Institucional</h3>
+            <p class="setor-desc">Assessoria de imprensa, cobertura de eventos escolares e divulgação de ações da 3ª GRE.</p>
+            <div class="setor-dados">
+                <div><strong>Telefone:</strong> (83) 3310-9168</div>
+                <div><strong>E-mail:</strong> nucom.3gre@see.pb.gov.br</div>
+            </div>
+        </article>
+    </section>
+
+    <!-- Formulário de Orientação e Envio Rápido -->
+    <section class="form-card">
+        <h2>Direcionamento Rápido de Atendimento</h2>
+        <p>Selecione o núcleo correspondente ao seu assunto para preparar sua mensagem institucional:</p>
+
+        <form id="form-contato-3gre">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nome-solicitante">Nome Completo</label>
+                    <input type="text" id="nome-solicitante" required placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="municipio-solicitante">Município / Escola (Opcional)</label>
+                    <input type="text" id="municipio-solicitante" placeholder="Ex.: Campina Grande - ECIT...">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="setor-destino">Setor / Serviço de Destino</label>
+                <select id="setor-destino" required>
+                    <option value="3gre@see.pb.gov.br">Atendimento Geral / Protocolo (3gre@see.pb.gov.br)</option>
+                    <option value="nudea.3gre@see.pb.gov.br">NUDEA — Pedagógico, Certificados e Vida Escolar</option>
+                    <option value="nuafs.3gre@see.pb.gov.br">NUAFS — Recursos Humanos, Financeiro e Suprimentos</option>
+                    <option value="nudpe.3gre@see.pb.gov.br">NUDPE — Jogos Escolares e Grêmios Estudantis</option>
+                    <option value="nutci.3gre@see.pb.gov.br">NUTCI — Sistemas (Quadro Escolar / Saber) e TI</option>
+                    <option value="nucom.3gre@see.pb.gov.br">NUCOM — Imprensa e Divulgação de Eventos</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="mensagem-solicitante">Resumo da Solicitação</label>
+                <textarea id="mensagem-solicitante" rows="4" required placeholder="Descreva sua dúvida ou solicitação com clareza..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-enviar">Preparar E-mail para o Setor</button>
+        </form>
+
+        <div class="feedback-envio" id="feedback-envio"></div>
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('form-contato-3gre');
+        const feedback = document.getElementById('feedback-envio');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const nome = document.getElementById('nome-solicitante').value.trim();
+            const origem = document.getElementById('municipio-solicitante').value.trim();
+            const emailDestino = document.getElementById('setor-destino').value;
+            const mensagem = document.getElementById('mensagem-solicitante').value.trim();
+
+            const assunto = encodeURIComponent(`Atendimento Portal SEE3GRE - ${nome}`);
+            const corpo = encodeURIComponent(
+                `Solicitante: ${nome}\n` +
+                (origem ? `Unidade/Município: ${origem}\n` : '') +
+                `\nMensagem:\n${mensagem}`
+            );
+
+            feedback.style.display = 'block';
+            feedback.innerHTML = `
+                <strong>Direcionamento pronto!</strong> O setor indicado para esta demanda é <strong>${emailDestino}</strong>.<br>
+                Caso seu aplicativo de e-mail não abra automaticamente, <a href="mailto:${emailDestino}?subject=${assunto}&body=${corpo}" style="color: #0d2c54; font-weight: 700;">clique aqui para enviar a mensagem</a>.
+            `;
+
+            window.location.href = `mailto:${emailDestino}?subject=${assunto}&body=${corpo}`;
+        });
+    });
+</script>
+{% endblock %}

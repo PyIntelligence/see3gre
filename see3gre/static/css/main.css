@@ -1,0 +1,317 @@
+:root {
+    --primary-color: #0d2c54;
+    --secondary-color: #1e6091;
+    --accent-color: #38bdf8;
+    --warm-highlight: #fbbf24;
+    --bg-color: #f4f6f9;
+    --text-color: #1e293b;
+    --card-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   Cabeçalho Institucional Interativo (Corte diagonal branco + azul-marinho)
+   ========================================================================== */
+.site-header {
+    width: 100%;
+    background-color: var(--card-bg);
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    min-height: 76px;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    background-color: var(--card-bg);
+    flex-shrink: 0;
+}
+
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.brand-gre {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.gre-badge {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 50%;
+    letter-spacing: 0.5px;
+}
+
+.gre-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.gre-text strong {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.gre-text small {
+    font-size: 0.78rem;
+    color: #475569;
+}
+
+.brand-divider {
+    width: 1px;
+    height: 36px;
+    background-color: #cbd5e1;
+}
+
+.brand-see {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    font-size: 0.82rem;
+    color: #334155;
+}
+
+.brand-see strong {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+/* Faixa Azul Diagonal da Direita com os Links */
+.header-nav {
+    background-color: var(--primary-color);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem 0 4.5rem;
+    clip-path: polygon(36px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.98rem;
+    font-weight: 500;
+    padding: 0.4rem 0.2rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff;
+    border-bottom-color: var(--accent-color);
+}
+
+/* Banner Principal Abaixo do Cabeçalho */
+.hero-banner {
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+.banner-full {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Sub-barra de Navegação Interna (NUDEA / Quadro Escolar) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 2rem;
+    background-color: #163e73;
+    color: #ffffff;
+}
+
+.header .logo {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+/* Área Central de Conteúdo */
+.dashboard-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.25rem;
+    flex: 1;
+}
+
+.dashboard-container h1,
+.section-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    padding-left: 0.85rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* ==========================================================================
+   Rodapé Institucional (Sede + Acesso Rápido + As 5 Bolinhas)
+   ========================================================================== */
+.site-footer {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    margin-top: auto;
+    padding: 1.5rem 2rem 1.15rem;
+    border-top: 4px solid var(--warm-highlight);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.35fr 1fr auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.86rem;
+    color: #e2e8f0;
+    line-height: 1.45;
+}
+
+.footer-info strong,
+.footer-links-group strong {
+    color: var(--warm-highlight);
+    font-size: 0.94rem;
+    margin-bottom: 0.3rem;
+    display: block;
+    letter-spacing: 0.2px;
+}
+
+.footer-info p {
+    margin: 0;
+}
+
+.footer-links-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.footer-quick-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    gap: 0.45rem 1.1rem;
+    font-size: 0.86rem;
+}
+
+.footer-quick-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-left: 3px solid var(--warm-highlight);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-quick-links a:hover {
+    background-color: var(--warm-highlight);
+    color: var(--primary-color);
+    font-weight: 600;
+    transform: translateX(2px);
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.social-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.social-circle:hover {
+    transform: translateY(-3px);
+    background-color: var(--warm-highlight);
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 1.15rem auto 0;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 960px) {
+    .site-header {
+        flex-direction: column;
+    }
+    .header-nav {
+        clip-path: none;
+        padding: 0.85rem 1rem;
+    }
+    .nav-list {
+        justify-content: center;
+        gap: 1rem;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 1.35rem;
+    }
+}
