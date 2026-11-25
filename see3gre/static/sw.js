@@ -1,4 +1,4 @@
-const CACHE_NAME = 'see3gre-pwa-v15';
+const CACHE_NAME = 'see3gre-pwa-v16';
 
 const ASSETS_ESSENCIAIS = [
     '/',
@@ -12,20 +12,12 @@ const ASSETS_ESSENCIAIS = [
     '/nutci',
     '/static/css/main.css?v=2',
     '/static/js/main.js?v=2',
-    '/static/js/nudea.js?v=5',
-    '/static/js/nutci.js',
+    '/static/js/subportal_auto.js?v=1',
     '/static/img/icon-3gre.svg',
     '/static/img/icon-3gre-180.png',
     '/static/img/icon-3gre-192.png',
     '/static/img/icon-3gre-512.png',
-    '/static/img/cabecalho_abaixo.png',
-    '/static/img/nudea.png',
-    '/static/img/nuafs.png',
-    '/static/img/nucom.png',
-    '/static/img/nudpe.png',
-    '/static/img/nutci.png',
-    '/static/img/nudea/quadros_escolares.png',
-    '/static/img/nutci/relatorio-nutci.png'
+    '/static/img/cabecalho_abaixo.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -52,12 +44,22 @@ self.addEventListener('fetch', (event) => {
     const url = new URL(event.request.url);
     if (url.origin !== self.location.origin) return;
 
+    // Nunca cacheia a API dinâmica de módulos para novos botões aparecerem na hora
+    if (url.pathname.startsWith('/api/')) {
+        event.respondWith(fetch(event.request));
+        return;
+    }
+
+    // Cache dinâmico automático para qualquer imagem ou asset em /static/
     if (url.pathname.startsWith('/static/')) {
         event.respondWith(
             caches.match(event.request).then((cached) => {
-                return cached || fetch(event.request).then((networkResp) => {
-                    const clone = networkResp.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+                if (cached) return cached;
+                return fetch(event.request).then((networkResp) => {
+                    if (networkResp && networkResp.status === 200) {
+                        const clone = networkResp.clone();
+                        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+                    }
                     return networkResp;
                 });
             })
